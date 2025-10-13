@@ -1,0 +1,24 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+actor "Пользователь" as User
+package "Система" {
+usecase "Вход в Программу" as UC_Login
+usecase "Отслеживание заказа через программу" as UC_see
+
+}
+package "Доп действия"{
+usecase "Оформление заказа" as UC_zakaz
+usecase "Принятие заказа" as UC_prinyatie
+}
+User --> UC_Login
+User --> UC_zakaz
+User --> UC_see
+actor "Менеджер" as manager
+manager -->  UC_Login
+manager --> UC_see
+actor "Персонал" as personal
+personal --> UC_prinyatie
+personal --> UC_see
+personal --> UC_Login
+@enduml
