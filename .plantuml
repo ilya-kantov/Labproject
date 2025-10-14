@@ -11,14 +11,14 @@ package "Доп действия"{
 usecase "Оформление заказа" as UC_zakaz
 usecase "Принятие заказа" as UC_prinyatie
 }
-User --> UC_Login
-User --> UC_zakaz
-User --> UC_see
+User -- UC_ogin
+User -- UC_zakaz
+User -- UC_see
 actor "Менеджер" as manager
-manager -->  UC_Login
-manager --> UC_see
+manager --  UC_Login
+manager -- UC_see
 actor "Персонал" as personal
-personal --> UC_prinyatie
-personal --> UC_see
-personal --> UC_Login
+personal -- UC_prinyatie
+personal -- UC_see
+personal -- UC_Login
 @enduml
