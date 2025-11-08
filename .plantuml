@@ -11,7 +11,7 @@ package "Доп действия"{
 usecase "Оформление заказа" as UC_zakaz
 usecase "Принятие заказа" as UC_prinyatie
 }
-User -- UC_ogin
+User -- UC_Login
 User -- UC_zakaz
 User -- UC_see
 actor "Менеджер" as manager

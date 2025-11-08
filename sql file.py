@@ -6,7 +6,8 @@ c.execute("""
         client_id INTEGER PRIMARY KEY AUTOINCREMENT,
         name TEXT NOT NULL,
         phone TEXT,
-        email TEXT
+        email TEXT,
+        password TEXT
     )""")
 c.execute("""
    CREATE TABLE IF NOT EXISTS staff (
@@ -14,7 +15,8 @@ c.execute("""
        name TEXT NOT NULL,
        role TEXT,
        phone TEXT,
-       email TEXT
+       email TEXT,
+       password TEXT    
    )""")
 c.execute("""
     CREATE TABLE IF NOT EXISTS tables (
@@ -63,6 +65,7 @@ class Client(Base):
     name = Column(String,nullable=False)
     phone = Column(String)
     email = Column(String)
+    password = Column(String)
 
     orders = relationship('Order', back_populates='client')
 
@@ -74,6 +77,7 @@ class Staff(Base):
     role = Column(String)
     phone = Column(String)
     email = Column(String)
+    password = Column(String)
 
     orders = relationship('Order', back_populates='staff')
 
@@ -135,7 +139,8 @@ with Session(autoflush=False, bind=engine) as db:
 c.execute("INSERT INTO clients (name, phone, email) VALUES ('dmitriy','89646457446','ngtunn@gmail.com')")
 c.execute("INSERT INTO staff (name, role, phone,email) VALUES ('ivan','povar','89646457346','cafe241@gmail.com')")
 c.execute("INSERT INTO tables (table_seats) VALUES (23)")
-c.execute("INSERT INTO order_details (order_id,status,dish) VALUES (1,'comleted','meat with mashed potatoes')")
+c.execute("INSERT INTO order_details (order_id,status,dish) VALUES (1,"
+          "comleted','meat with mashed potatoes')")
 c.execute("INSERT INTO orders (client_id,table_id,staff_id,order_date,order_number,price) VALUES (1,1,1,'third october',322,1349.99)")
 #Получение всех заказов клиента
 client_id=1
